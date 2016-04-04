@@ -1,5 +1,3 @@
-[![Fishing Logger Logo](FISHING LOGGER)]()
-
 # Fishing Logger API
 
 ## API
