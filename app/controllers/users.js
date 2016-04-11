@@ -48,19 +48,19 @@ const signup = (req, res, next) => {
     new User(user).setPassword(credentials.password)
   ).then(newUser => {
     let user = newUser.toObject();
-    delete user.token;
+    // delete user.token;
     delete user.passwordDigest;
     res.json({ user });
   }).catch(makeErrorHandler(res, next));
 };
 
-const signin = (req, res, next) => {
+const login = (req, res, next) => {
   let credentials = req.body.credentials;
   let search = { email: credentials.email };
-  User.findOne(search
-  ).then(user =>
-    user ? user.comparePassword(credentials.password) :
-          Promise.reject(new HttpError(404))
+  User.findOne(search)
+    .then(user =>
+      user ? user.comparePassword(credentials.password) :
+        Promise.reject(new HttpError(404))
   ).then(user =>
     getToken().then(token => {
       user.token = token;
@@ -105,9 +105,9 @@ module.exports = controller({
   index,
   show,
   signup,
-  signin,
+  login,
   signout,
   changepw,
 }, { before: [
-  { method: authenticate, except: ['signup', 'signin'] },
+  { method: authenticate, except: ['signup', 'login'] },
 ], });

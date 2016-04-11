@@ -8,9 +8,9 @@ module.exports = require('lib/wiring/routes')
 .root('root#root')
 
 // users of the app have special requirements
-.post('/sign-up', 'users#signup')
-.post('/sign-in', 'users#signin')
-.delete('/sign-out/:id', 'users#signout')
+.post('/signup', 'users#signup')
+.post('/login', 'users#login')
+.delete('/signout/:id', 'users#signout')
 .patch('/change-password/:id', 'users#changepw')
 .resources('users', { only: ['index', 'show'] })
 
