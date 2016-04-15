@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl --include --request POST http://localhost:3050/sign-in \
+curl --include --request POST http://localhost:3050/login \
   --header "Content-Type: application/json" \
   --data '{
     "credentials": {
