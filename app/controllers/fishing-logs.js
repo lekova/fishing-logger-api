@@ -9,13 +9,23 @@ const authenticate = require('./concerns/authenticate');
 const index = (req, res, next) => {
   let search = { _owner: req.currentUser._id };
   FishingLog.find(search)
-    .then(fishingLogs => res.json({ fishingLogs }))
+    .then(fishingLogs => {
+        if (fishingLogs.length == 0) {
+            return res.json('No logs yet!');
+        }
+        return res.json({ fishingLogs })
+    })
     .catch(err => next(err));
 };
 
 const show = (req, res, next) => {
   FishingLog.findById(req.params.id)
-    .then(fishingLog => fishingLog ? res.json({ fishingLog }) : next())
+    .then(fishingLog => {
+        if (fishingLog.length == 0) {
+            return res.json('No logs yet!');
+        }
+        return fishingLog ? res.json({ fishingLog }) : next()
+    })
     .catch(err => next(err));
 };
 
