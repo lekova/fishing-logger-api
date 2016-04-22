@@ -10,9 +10,11 @@ module.exports = require('lib/wiring/routes')
 // users of the app have special requirements
 .post('/signup', 'users#signup')
 .post('/login', 'users#login')
-.delete('/signout/:id', 'users#signout')
-.patch('/change-password/:id', 'users#changepw')
+.delete('/signout', 'users#signout')
+.patch('/changepw', 'users#changepw')
 .resources('users', { only: ['index', 'show'] })
 
 // custom RESTful routes
-.resources('fishing-logs');
+.resources('fishing-logs')
+.post('/weather', 'weather#create')
+.get('/weather', 'weather#index');
