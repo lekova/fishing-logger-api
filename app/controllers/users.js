@@ -76,7 +76,6 @@ const login = (req, res, next) => {
 const signout = (req, res, next) => {
   getToken().then(token =>
     User.findOneAndUpdate({
-      _id: req.params.id,
       token: req.currentUser.token,
     }, {
       token,
@@ -89,7 +88,6 @@ const signout = (req, res, next) => {
 const changepw = (req, res, next) => {
   debug('Changing password');
   User.findOne({
-    _id: req.params.id,
     token: req.currentUser.token,
   }).then(user =>
     user ? user.comparePassword(req.body.passwords.old) :
