@@ -15,10 +15,6 @@ module.exports = require(require('path').resolve('lib', 'wiring', 'routes'))
 .resources('users', { only: ['index', 'show'] })
 
 // custom RESTful routes
-<<<<<<< Updated upstream
 .resources('fishing-logs');
-=======
-.resources('fishing-logs')
 // .post('/weather', 'weather#create')
 // .get('/weather', 'weather#index');
->>>>>>> Stashed changes
