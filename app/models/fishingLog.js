@@ -17,7 +17,12 @@ const fishingLogSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  trip_date: {
+  start_date: {
+    type: Date, 
+    default: Date.now,
+    required: true,
+  },
+  end_date: {
     type: Date, 
     default: Date.now,
     required: true,
@@ -26,9 +31,9 @@ const fishingLogSchema = new mongoose.Schema({
      type: String,
      required: false
   },
-  result: {
-    type: String, 
-    required: false  
+  bait: {
+    type: mongoose.Schema.Types.Mixed,
+    required: true,
   },
   comments: {
     type: String, 
