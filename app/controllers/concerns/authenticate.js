@@ -2,7 +2,7 @@
 
 const crypto = require('crypto');
 
-const models = require('app/models');
+const models = require(require('path').resolve('app', 'models'));
 const User = models.user;
 
 const encodeToken = (token) => {

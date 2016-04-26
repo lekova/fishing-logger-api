@@ -3,16 +3,16 @@
 require('dotenv').load({
   silent: true,  // suppress missing `.env` warning
 });
-
+const path = require('path');
 const express = require('express');
 const app = express();
-const middleware = require('app/middleware');
+const middleware = require(path.resolve('app', 'middleware'));
 
 app.set('root', __dirname);
 
 middleware.before(app);
 
-const routes = require('config/routes');
+const routes = require(require('path').resolve('config', 'routes'));
 
 app.use(routes.router);
 
@@ -48,7 +48,7 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
-
+console.log("Server listening on port", port, ".....");
 /**
  * Event listener for HTTP server "error" event.
  */

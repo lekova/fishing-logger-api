@@ -2,15 +2,15 @@
 
 const debug = require('debug')('fishing-logger:users');
 
-const controller = require('lib/wiring/controller');
-const models = require('app/models');
+const controller = require(require('path').resolve('lib', 'wiring', 'controller'));
+const models = require(require('path').resolve('app', 'models'));
 const User = models.user;
 
 const crypto = require('crypto');
 
 const authenticate = require('./concerns/authenticate');
 
-const HttpError = require('lib/wiring/http-error');
+const HttpError = require(require('path').resolve('lib', 'wiring', 'http-error'));
 
 const getToken = () =>
   new Promise((resolve, reject) =>

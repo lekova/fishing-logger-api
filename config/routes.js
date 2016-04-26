@@ -1,6 +1,6 @@
 'use strict';
-
-module.exports = require('lib/wiring/routes')
+const path = require('path');
+module.exports = require(require('path').resolve('lib', 'wiring', 'routes'))
 
 // create routes
 
@@ -15,4 +15,10 @@ module.exports = require('lib/wiring/routes')
 .resources('users', { only: ['index', 'show'] })
 
 // custom RESTful routes
+<<<<<<< Updated upstream
 .resources('fishing-logs');
+=======
+.resources('fishing-logs')
+// .post('/weather', 'weather#create')
+// .get('/weather', 'weather#index');
+>>>>>>> Stashed changes

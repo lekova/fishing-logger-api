@@ -1,7 +1,7 @@
 'use strict';
 
-const controller = require('lib/wiring/controller');
-const models = require('app/models');
+const controller = require(require('path').resolve('lib', 'wiring', 'controller'));
+const models = require(require('path').resolve('app', 'models'));
 const FishingLog = models.fishingLog;
 
 const authenticate = require('./concerns/authenticate');

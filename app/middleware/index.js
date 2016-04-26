@@ -7,7 +7,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const loader = require('lib/wiring/loader');
+const loader = require(require('path').resolve('lib', 'wiring', 'loader'));
 
 var corsOptions = {
   origin: process.env.GITHUB_IO_URL || 'http://localhost:8080',

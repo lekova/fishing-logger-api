@@ -1,5 +1,5 @@
 'use strict';
 
-const loader = require('lib/wiring/loader');
+const loader = require(require('path').resolve('lib', 'wiring', 'loader'));
 
 module.exports = loader(__filename);
