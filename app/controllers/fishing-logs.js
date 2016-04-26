@@ -13,7 +13,7 @@ const index = (req, res, next) => {
         if (fishingLogs.length == 0) {
             return res.json('No logs yet!');
         }
-        return res.json({ fishingLogs })
+        return res.json(fishingLogs);
     })
     .catch(err => next(err));
 };
@@ -24,7 +24,7 @@ const show = (req, res, next) => {
         if (fishingLog.length == 0) {
             return res.json('No logs yet!');
         }
-        return fishingLog ? res.json({ fishingLog }) : next()
+        return fishingLog ? res.json(fishingLog) : next()
     })
     .catch(err => next(err));
 };
@@ -34,7 +34,7 @@ const create = (req, res, next) => {
     _owner: req.currentUser._id,
   });
   FishingLog.create(fishingLog)
-    .then(fishingLog => res.json({ fishingLog }))
+    .then(fishingLog => res.json(fishingLog))
     .catch(err => next(err));
 };
 
